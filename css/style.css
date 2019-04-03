@@ -1,0 +1,260 @@
+/*body {
+	background-color: black;
+}*/
+
+/*.snakeDiv {
+	text-align: center;
+	margin-top: 400px 0 100px 0;
+}*/
+
+body {
+	font-family: Teko, sans-serif;
+}
+button:focus {
+    outline: none;
+}
+
+.winPage {
+	text-align: center;
+	/*font-family: Rationale, sans-serif;*/
+	font-family: Teko, sans-serif;
+	margin-top: 125px;
+}
+
+.youWonOne {
+	color: white;
+	font-size: 72px;
+}
+
+.youWonTwo {
+	color: #A82B11;
+	margin: 0;
+}
+
+#snake {
+	margin-left: 400px;
+	margin-right: 400px;
+	position: relative;
+	animation-duration: 3s;
+    animation-name: moving;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    position: -webkit-sticky;
+}
+
+@keyframes moving {
+    from {
+        left: 1%;
+    }
+    to {
+        right: 1%;
+    }
+}
+
+
+.title {
+	text-align: center;
+	margin-top: 150px;
+}
+.playButtons {
+	text-align: center;
+	margin-top: 300px;
+	font-family: Teko, sans-serif;
+}
+
+.stats {
+	width: 200px;
+	margin: 10px 0 0 30px;
+	padding: 10px 10px 10px 10px;
+/*	border-style: solid, white;*/
+}
+
+.ageTracker {
+	color: white;
+	margin: 10px 0 2px 10px;
+/*	font-family: Rationale, sans-serif;*/
+	font-family: Teko, sans-serif;
+	font-size: 24px;
+}
+
+.hungerTracker, .boredomTracker, .sleepinessTracker {
+	margin: 10px 0 2px 10px;
+	/*font-family: Rationale, sans-serif;*/
+	font-family: Teko, sans-serif;
+	font-size: 24px;
+	color: #0A6A56;
+}
+
+.feed, .play, .sing {
+	border-radius: 0px;
+	color: #A82B11;
+	font-size: 24px;
+	background-color: white;
+	border-style: hidden;
+/*	font-family: Rationale, sans-serif;*/
+	font-family: Teko, sans-serif;
+}
+
+.feed {
+	margin: 0 5px 0 0;
+}
+
+.play {
+	margin: 0 5px 5px 0;
+}
+
+.sing {
+	margin: 0 0 5px 0;
+}
+
+.feed:hover, .play:hover, .sing:hover {
+	color: black;
+}
+
+.endPage {
+	text-align: center;
+	margin-top: 300px;
+}
+
+.gameOverOne {
+	color: white;
+/*	font-family: Rationale, sans-serif;*/
+	font-family: Teko, sans-serif;
+	font-size: 72px;
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+.gameOverTwo {
+	color: #A82B11;
+	font-size: 50px;
+	font-kerning: 5px;
+	padding-top: 0;
+	margin-top: 0;
+/*	font-family: Rationale, sans-serif;*/
+	font-family: Teko, sans-serif;
+}
+
+body {
+	background-color: black;
+}
+
+.gameButtons {
+	margin: 100px 0 0 0;
+	text-align: center;
+	font-family: Teko, sans-serif;
+}
+
+.retry {
+	margin: 100px 0 0 0;
+	text-align: center;
+	font-family: Teko, sans-serif;
+
+}
+
+.playGame, .instructions, .youWon {
+	border-radius: 0px;
+	background-color: black;
+	color: #BD9302;;
+/*	font-family: Rationale, sans-serif;*/
+	padding: 3px 3px 3px 3px;
+	font-size: 40px;
+	border-style: hidden;
+	font-family: Teko, sans-serif;
+}
+
+
+.playAgain {
+	border-radius: 0px;
+	background-color: rgba(0,0,0,0);
+	color: #A82B11;
+/*	font-family: Rationale, sans-serif;*/
+	padding: 3px 3px 3px 3px;
+	font-size: 40px;
+	border-style: hidden;
+	font-family: Teko, sans-serif;
+}
+
+.playGame {
+	margin: 0 10px 0 0;
+}
+
+.youWon {
+	margin: 0 0 0 10px;
+}
+
+.instructions {
+	margin: 0 5px 0 5px;
+}
+
+.instructionsDiv {
+	background-color: rgba(255,255,255,.8);
+	width: 50%;
+	margin: auto;
+}
+
+.instructionsDiv h1 {
+	color: #A82B11;
+/*	font-family: Rationale, sans-serif;*/
+	font-family: Teko, sans-serif;
+	padding: 15px 0 0 15px;
+	font-size: 48px;
+	margin: 10px 10px 0 10px;
+}
+
+.instructionFinal {
+	color: black;
+	font-size: 18px;
+	font-style: italic;
+	margin: 10px 0 15px 12px;
+	padding: 15px 0 15px 17px;
+/*	font-family: Rationale, sans-serif;
+	font-family: Teko, sans-serif;
+*/}
+
+
+.objective {
+	font-style: bold;
+	font-size: 24px;
+	color: black;
+/*	font-family: Rationale, sans-serif;*/
+	font-family: Teko, sans-serif;
+	padding: 0 0 0 30px;
+	margin: 10px 0 15px 0;
+}
+
+.instructionText {
+	font-size: 18px;
+	color: #BD9302;
+/*	font-family: Rationale, sans-serif;*/
+	font-family: Teko, sans-serif;
+	padding: 0 0 0 30px;
+	margin: 0;
+}
+
+.playGame:hover, .instructions:hover, .youWon:hover {
+	color: #A82B11;
+}
+
+.playAgain:hover {
+	color:#BD9302;
+}
+
+.exitDiv {
+	text-align: right;
+}
+
+.exit {
+	font-size: 32px;
+	border-style: hidden;
+	background-color: black;
+	color: #BD9302;
+	font-family: Orbitron, sans-serif;
+	padding: 10px 10px 0 0;
+}
+
+.exit:hover {
+	 color: #A82B11;
+}
+
+
