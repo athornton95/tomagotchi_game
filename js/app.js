@@ -11,16 +11,17 @@ class Tomagatchi {
 	}
 }
 
-// let snackBreak = false;
-
 const gucci = new Tomagatchi ("Gucci Mane");
+
+//INITIAL VARIABLES &
 
 let timePassing; 
 let seconds = 0;
 let minutes = 0;
+let intervalRate = 1000;
 
 
-//BUTTONS
+//MAIN PAGE BUTTON ACTIONS
 $('.playGame').on('click', () => {
 	loadMainPage();
 	playGame();
@@ -55,6 +56,9 @@ $('.instructions').on('click', () => {
 	$('.instructionsDiv').append('<p class = "instructionText">HOWEVER, IF YOU PLAY WITH HIM TOO MUCH, LET HIM SLEEP TOO LONG, OR OVER FEED HIM, </p>');
 	$('.instructionsDiv').append('<p class = "instructionText">HE WILL DIE.  CLICK THE BUTTONS ON THE BOTTOM OF THE PAGE TO KEEP HIS HUNGER, </p>');
 	$('.instructionsDiv').append('<p class = "instructionText">SLEEPINESS, AND BOREDOM BETWEEN 0 - 3, ANYTHING OVER OR UNDER WILL KILL HIM. </p>');
+	$('.instructionsDiv').append('<br>');
+	$('.instructionsDiv').append('<p class = "instructionText">BUT BE CAREFUL, DO NOT GET TOO COMFORTABLE...HE IS A LIL KILLA AFTER ALL. </p>');
+	$('.instructionsDiv').append('<p class = "instructionText">CLICK ANYWHERE OUTSIDE THE BUTTONS AND HE WILL KILL YOU. </p>');
 	$('.instructionsDiv').append('<p class = "instructionFinal">DO YOU HAVE WHAT IT TAKES?</p>');
 
 	$('.exit').on('click', () => {
@@ -65,11 +69,11 @@ $('.instructions').on('click', () => {
 });
 
 
+//MAIN FUNCTIONS
 const render = () => {
 	document.location.reload(true);
 };
 
-//FUNCTIONS
 const playGame = () => {
 	console.log("play game");
 	timePassing = setInterval(secondsGoUp, intervalRate);
@@ -87,36 +91,22 @@ const loadMainPage = () => {
 			$('.stats').append(`<p class="hungerTracker">Hunger: <span class="hunger">0</span></p>`);
 			$('.stats').append(`<p class="boredomTracker">Boredom: <span class="boredom">0</span></p>`);
 			$('.stats').append(`<p class="sleepinessTracker">Sleepiness: <span class="sleepiness">0</span></p>`);
-	$('.fullPage').append('<img id="snake" src="images/snakeGIF.gif">');
-	// $('#snake').animate({
-	// 	right: "+=50px",
-	// 	height: "+=30"
-	// }, 3000, function (){
-	// $('#snake').animate({
-	// 	left: '250px',
-	// 	// height: '150px',
-	// 	// width: '150px'
-	// }, 3000, function (){
-	// });
-	// });
-	// if(seconds % 5 === 0){
-	// 	$('#snakeDiv')
-	// 		.find('#snake')
-	// 		.animate({
-	// 			left: 400
-	// 		}, 5000);
-	// }
+	$('body').append('<div class = "snakeDiv"></div>');
+	$('.snakeDiv').append('<img id="snake" src="images/snakeGIF.gif">');
+	
 	$('#snake').animate({
-		left : '200px'
+		left : '200px',
+		top : '200px'
 	}, 3000);
 
 	$('.playGame').remove();
-	    $('.fullPage').append('<div class="playButtons"></div>');
+	    $('body').append('<div class="playButtons"></div>');
 	    	$('.playButtons').append('<button class="feed">Feed ya Boiii</button>');
 	    	$('.playButtons').append('<button class="play">Play wit Lil Killa</button>');
 	    	$('.playButtons').append('<button class="sing">Sing Killa a Lullabaiiii</button>');
 	 	// $('.fullPage').append('<p>Time: <span class = "minutes">0</span> Minutes, <span class = "timer">0</span> Seconds</p>');
 
+//GAME PAGE BUTTON ACTIONS
 $('.exit').on('click', () => {
 	console.log('this works');
 	render();
@@ -147,8 +137,47 @@ $('.play').on('click', () => {
     audioElement.play();
 });
 
+$('.playButtons').on('click', (e) => {
+	console.log(e.target);
+	if(e.target.className !== "sing" && e.target.className !== "play" && e.target.className !== "feed"){
+		// $('.snakeDiv').empty();
+		// clearInterval(timePassing);
+		// $('.snakeDiv').append('<img')
+		let audioElement = document.createElement('audio');
+   		audioElement.setAttribute('src', 'music/snakehiss2.mp3');
+    	audioElement.play();
+		clearInterval(timePassing);
+		$('body').empty();
+		$('body').append('<div class="exitDiv"></div>');
+		$('.exitDiv').append('<button class="exit">X</button>')
+		$('.exit').on('click', () => {
+			console.log('this works');
+			render();
+			});
+		// $('body').append('<div class="youDiedTwo"></div>');
+		// $('.youDiedTwo').append('<h1 id="gameOver">LIL KILLA WAS APTLY NAMED. YOU DEAD.</h1>')
+		$('body').append('<div class="youDied"></div>');
+		$('.youDied').append('<img id=killerSnake src="images/killerSnake.png">');
+		$('#killerSnake').animate({
+			height : "400pt"
+			}, 1000);
+		$('#killerSnake').animate({
+			height : "200pt"
+			}, 1000);
+		$('body').append('<div class="youDiedTwo"></div>');
+		$('.youDiedTwo').append('<h1 id="gameOver">LIL KILLA WAS APTLY NAMED. YOU DEAD.</h1>');
+		// $('body').append('<div class="tryAgainTwo"></div>');
+		// $('.tryAgainTwo').append('<button class="playAgainTwo">PLAY AGAIN</button>');
+		// $('.playAgainTwo').animate({
+		// 	opacity : "100%"
+		// 	}, 3000);
+
+	}
+});
 
 };
+
+
 
 // const snakeMoves = () => {
 // 	if(seconds % 5 === 0){
@@ -158,7 +187,6 @@ $('.play').on('click', () => {
 // 	}
 // }
 
-let intervalRate = 1000;
 
 const secondsGoUp = () => {
 	statAlert();
@@ -274,9 +302,16 @@ const sleepinessTracker = () => {
 const gameOver = () => {
 	clearInterval(timePassing);
 	$('body').empty();
+	$('body').append('<div class="exitDiv"></div>');
+	$('.exitDiv').append('<button class="exit">X</button>');
+	$('.exit').on('click', () => {
+		console.log('this works');
+		render();
+	});
 	$('body').append('<div class="endPage"></div>');
-	$('.endPage').append('<h1 class = "gameOverOne">YOU KILLED LIL KILLA!</h1>')
-	$('.endPage').append('<h2 class = "gameOverTwo">GAME OVER</h2>')
+	// $('.endPage').append('<h1 class = "gameOverOne">YOU KILLED LIL KILLA!</h1>')
+	$('.endPage').append('<img class="stone" src="images/stone.png">');
+	// $('.endPage').append('<h2 class = "gameOverTwo">GAME OVER</h2>')
 	$('body').append('<div class="retry"></div>')
 	$('.retry').append('<button class ="playAgain">TRY AGAIN</button>')
 	let audioElement = document.createElement('audio');
@@ -286,6 +321,7 @@ const gameOver = () => {
 $('.playAgain').on('click', () => {
 	render();
 })
+
 };
 
 
